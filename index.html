@@ -946,18 +946,7 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function cadastrar(inputId, successId) {
-  const email = document.getElementById(inputId).value;
-  if (!email || !email.includes('@')) {
-    alert('Por favor, insira um e-mail válido.');
-    return;
-  }
-  // Aqui você integra com Mailchimp, Google Forms, etc.
-  // Por enquanto, mostra mensagem de sucesso
-  document.getElementById(inputId).value = '';
-  document.getElementById(successId).style.display = 'block';
-  setTimeout(() => {
-    document.getElementById(successId).style.display = 'none';
-  }, 5000);
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLScjM5PP9QXNtOVpB7bZ0A54zSaoatjJalKklrrtIVnY2aBpig/viewform?usp=header', '_blank');
 }
 
 // Smooth scroll for nav CTA
