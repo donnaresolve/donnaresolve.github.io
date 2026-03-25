@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donna Resolve — A gente apoia, você resolve!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --terracota: #C1440E;
+    --terracota-light: #E86030;
+    --verde: #2D6A4F;
+    --verde-light: #52B788;
+    --quase-preto: #1A1410;
+    --marrom: #6B3F28;
+    --bege: #E8DDD0;
+    --bege-escuro: #D4C4B0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--quase-preto);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(193,68,14,0.1);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--terracota);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--verde); }
+
+  .nav-cta {
+    background: var(--terracota);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover {
+    background: var(--terracota-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(193,68,14,0.3);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+  }
+
+  .hero-text { position: relative; }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--verde-light);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--quase-preto);
+    margin-bottom: 24px;
+    animation: fadeInUp 0.7s ease 0.1s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracota);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #5A4A3A;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 44px;
+    animation: fadeInUp 0.7s ease 0.2s both;
+  }
+
+  /* FORM */
+  .hero-form {
+    animation: fadeInUp 0.7s ease 0.3s both;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--marrom);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .input-row input {
+    flex: 1;
+    padding: 18px 22px;
+    border: 2px solid var(--bege-escuro);
+    border-right: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    background: white;
+    color: var(--quase-preto);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-row input:focus {
+    border-color: var(--terracota);
+  }
+
+  .input-row input::placeholder { color: #AAA; }
+
+  .btn-main {
+    background: var(--terracota);
+    color: white;
+    border: none;
+    padding: 18px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .btn-main:hover {
+    background: var(--terracota-light);
+  }
+
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+    text-decoration: none;
+  }
+
+  .btn-whatsapp:hover {
+    background: #1db954;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+  }
+
+  .btn-whatsapp svg { width: 22px; height: 22px; fill: white; }
+
+  .divider-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #AAA;
+    margin: 12px 0;
+    position: relative;
+  }
+
+  .divider-text::before, .divider-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: var(--bege-escuro);
+  }
+
+  .divider-text::before { left: 0; }
+  .divider-text::after { right: 0; }
+
+  .hero-social-proof {
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .avatars {
+    display: flex;
+  }
+
+  .avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bege);
+  }
+
+  .avatar:first-child { margin-left: 0; }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInRight 0.8s ease 0.2s both;
+  }
+
+  .hero-card-main {
+    background: white;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    max-width: 380px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ada-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--bege);
+  }
+
+  .ada-avatar {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .ada-info { flex: 1; }
+  .ada-name { font-weight: 600; font-size: 0.95rem; }
+  .ada-status { font-size: 0.75rem; color: var(--verde-light); display: flex; align-items: center; gap: 4px; }
+  .ada-status::before { content: '●'; font-size: 8px; }
+
+  .chat-bubble {
+    background: var(--bege);
+    border-radius: 4px 18px 18px 18px;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--quase-preto);
+    margin-bottom: 12px;
+  }
+
+  .chat-bubble.user {
+    background: var(--terracota);
+    color: white;
+    border-radius: 18px 4px 18px 18px;
+    text-align: right;
+  }
+
+  .chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .chat-opt {
+    background: white;
+    border: 1.5px solid var(--bege-escuro);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: var(--marrom);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chat-opt:hover {
+    border-color: var(--terracota);
+    color: var(--terracota);
+  }
+
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .float-card-1 {
+    top: -20px; right: -20px;
+    background: var(--verde);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float-card-2 {
+    bottom: 20px; left: -30px;
+    color: var(--quase-preto);
+    animation: float 3s ease-in-out 1.5s infinite;
+  }
+
+  .float-card-2 .stat { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--terracota); }
+
+  /* SECTION: DOR */
+  .section-dor {
+    background: var(--quase-preto);
+    color: var(--cream);
+    padding: 90px 40px;
+    text-align: center;
+  }
+
+  .section-dor h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-dor h2 em { color: var(--terracota-light); font-style: italic; }
+
+  .section-dor p {
+    font-size: 1.05rem;
+    color: #C0B5A8;
+    max-width: 580px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pain-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+
+  .pain-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-4px);
+  }
+
+  .pain-icon { font-size: 1.8rem; margin-bottom: 14px; }
+  .pain-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .pain-card p { font-size: 0.87rem; color: #9A8A7A; line-height: 1.6; }
+
+  /* SECTION: COMO FUNCIONA */
+  .section-como {
+    padding: 90px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 16px;
+  }
+
+  .section-como h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 14px;
+    max-width: 520px;
+    line-height: 1.15;
+  }
+
+  .section-como .subtitle {
+    color: #7A6A5A;
+    font-size: 1rem;
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--bege);
+    line-height: 1;
+    margin-bottom: -10px;
+  }
+
+  .step-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid var(--bege);
+    transition: all 0.3s;
+  }
+
+  .step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    border-color: var(--terracota);
+  }
+
+  .step-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+
+  .step-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+  .step-card p { font-size: 0.87rem; color: #7A6A5A; line-height: 1.6; }
+
+  /* SECTION: CATEGORIAS */
+  .section-categorias {
+    background: var(--bege);
+    padding: 90px 40px;
+  }
+
+  .section-categorias-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-categorias h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .cat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--terracota);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+  .cat-card:hover::before { opacity: 1; }
+
+  .cat-emoji { font-size: 2.2rem; margin-bottom: 16px; }
+  .cat-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+  .cat-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cat-tag {
+    background: var(--bege);
+    color: var(--marrom);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+
+  /* DEPOIMENTOS/DORES */
+  .section-frases {
+    padding: 90px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-frases h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    margin-bottom: 50px;
+    line-height: 1.2;
+  }
+
+  .frases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .frase-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid var(--bege);
+    text-align: left;
+    position: relative;
+  }
+
+  .frase-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--terracota);
+    opacity: 0.3;
+    margin-bottom: -10px;
+  }
+
+  .frase-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--quase-preto);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  .frase-author {
+    font-size: 0.8rem;
+    color: #AAA;
+    font-weight: 600;
+  }
+
+  /* FINAL CTA */
+  .section-cta {
+    background: linear-gradient(135deg, var(--terracota) 0%, #A0340A 100%);
+    padding: 100px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 600px; height: 600px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  .section-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; right: -10%;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  .section-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.1;
+  }
+
+  .section-cta p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-form {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-form .input-row {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+
+  .cta-form .input-row input {
+    border-color: transparent;
+  }
+
+  .cta-form .btn-main {
+    background: var(--quase-preto);
+  }
+
+  .cta-form .btn-main:hover { background: #2D1F14; }
+
+  .cta-wpp {
+    margin-top: 14px;
+  }
+
+  .cta-wpp a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .cta-wpp a:hover { color: white; }
+  .cta-wpp svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* FOOTER */
+  footer {
+    background: var(--quase-preto);
+    color: rgba(255,255,255,0.4);
+    padding: 40px;
+    text-align: center;
+    font-size: 0.82rem;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+  }
+
+  footer .footer-logo span { color: var(--verde-light); }
+
+  footer .footer-slogan {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(82,183,136,0.15);
+    border: 1.5px solid var(--verde-light);
+    border-radius: 12px;
+    color: var(--verde);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { grid-template-columns: 1fr; padding: 90px 20px 50px; gap: 40px; }
+    .hero-visual { display: none; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .frases-grid { grid-template-columns: 1fr; }
+    .section-dor, .section-como, .section-frases, .section-cta { padding: 60px 20px; }
+    .section-categorias { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Donna<span>Resolve</span></div>
+  <a href="#lista" class="nav-cta">Quero entrar na lista →</a>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">🌱 Em breve — seja das primeiras</div>
+      <h1>Chega de depender de alguém para resolver o que é <em>seu.</em></h1>
+      <p class="hero-sub">Orientação prática, confiável e empática para mulheres resolverem problemas de casa, carro e tecnologia — com ou sem a ajuda de um especialista.</p>
+
+      <div class="hero-form" id="lista">
+        <label class="form-label">Entre na lista de espera gratuita</label>
+        <div class="input-row">
+          <input type="email" id="email-hero" placeholder="seu@email.com" />
+          <button class="btn-main" onclick="cadastrar('email-hero', 'success-hero')">Quero entrar →</button>
+        </div>
+        <div class="divider-text">ou</div>
+        <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20entrar%20na%20lista%20de%20espera%20da%20Donna%20Resolve%20🌱" target="_blank" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Entrar pelo WhatsApp
+        </a>
+        <div class="success-msg" id="success-hero">✅ Ótimo! Você está na lista. Avisaremos quando lançar!</div>
+        <div class="hero-social-proof">
+          <div class="avatars">
+            <div class="avatar">👩</div>
+            <div class="avatar">👩‍💼</div>
+            <div class="avatar">👩‍🔧</div>
+          </div>
+          <span>Junte-se às primeiras mulheres na lista de espera</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISUAL: ADA CHAT -->
+    <div class="hero-visual">
+      <div class="float-card float-card-1">
+        <span>✅</span> Problema resolvido!
+      </div>
+      <div class="hero-card-main">
+        <div class="ada-header">
+          <div class="ada-avatar">A</div>
+          <div class="ada-info">
+            <div class="ada-name">Ada — sua assistente</div>
+            <div class="ada-status">Online agora</div>
+          </div>
+        </div>
+        <div class="chat-bubble user">Meu disjuntor desarmou de novo 😩</div>
+        <div class="chat-bubble">Entendo! Vamos resolver isso juntas. Antes de chamar um eletricista, tem alguns passos simples que você pode tentar com segurança. Posso te guiar? 🙂</div>
+        <div class="chat-options">
+          <button class="chat-opt">✅ Sim, me guia!</button>
+          <button class="chat-opt">👩‍🔧 Prefiro um especialista</button>
+          <button class="chat-opt">❓ O que pode causar?</button>
+        </div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="stat">94%</div>
+        <div>resolvem sem precisar<br>chamar ninguém</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="section-dor">
+  <h2>Você já se sentiu assim<br><em>mais de uma vez?</em></h2>
+  <p>Milhões de mulheres vivem isso todo dia. A Donna Resolve existe para mudar isso.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">🚗</div>
+      <h3>Luz acendeu no painel</h3>
+      <p>Não sei o que significa e fico com medo de que seja grave — e de ser enganada na oficina.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🪠</div>
+      <h3>Entupimento às 22h</h3>
+      <p>Não tenho ideia por onde começar e fico esperando alguém disponível para ajudar.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">⚡</div>
+      <h3>Disjuntor desarmou</h3>
+      <p>Fico sem luz sem entender por quê e com receio de mexer em algo elétrico.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📶</div>
+      <h3>Wi-Fi caiu de vez</h3>
+      <p>Já reiniciei o roteador mil vezes. Não sei mais o que fazer e preciso trabalhar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section-como">
+  <div class="section-tag">Como funciona</div>
+  <h2>Simples, rápido e feito para você</h2>
+  <p class="subtitle">Sem jargões técnicos. Sem complicação. Só orientação clara e empática para agir com confiança.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-card">
+        <div class="step-icon">🔍</div>
+        <h3>Descreva o problema</h3>
+        <p>Fale com a Ada em linguagem natural. Ela entende você e faz as perguntas certas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-card">
+        <div class="step-icon">📋</div>
+        <h3>Receba o guia passo a passo</h3>
+        <p>Instruções claras, verificadas e seguras — sem termos técnicos, sem enrolação.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-card">
+        <div class="step-icon">🙋‍♀️</div>
+        <h3>Resolva ou chame um especialista</h3>
+        <p>Você decide. Se precisar de ajuda profissional, conectamos você com especialistas verificados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="section-categorias">
+  <div class="section-categorias-inner">
+    <h2>Tudo que você precisa, num só lugar</h2>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-emoji">🚗</div>
+        <h3>Automóvel</h3>
+        <div class="cat-tags">
+          <span class="cat-tag">Bateria descarregada</span>
+          <span class="cat-tag">Troca de pneu</span>
+          <span class="cat-tag">Luzes do painel</span>
+          <span class="cat-tag">Óleo do motor</span>
+          <span class="cat-tag">Superaquecimento</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">🔧</div>
+        <h3>Casa — Hidráulica</h3>
+        <div class="cat-tags">
+          <span class="cat-tag">Torneira pingando</span>
+          <span class="cat-tag">Vaso entupido</span>
+          <span class="cat-tag">Vazamentos</span>
+          <span class="cat-tag">Vazamento de gás</span>
+          <span class="cat-tag">Infiltrações</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">💡</div>
+        <h3>Casa — Elétrica & Tech</h3>
+        <div class="cat-tags">
+          <span class="cat-tag">Disjuntor</span>
+          <span class="cat-tag">Tomada sem energia</span>
+          <span class="cat-tag">Wi-Fi caído</span>
+          <span class="cat-tag">Notebook lento</span>
+          <span class="cat-tag">Chuveiro elétrico</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">🔨</div>
+        <h3>Serviços & Ferramentas</h3>
+        <div class="cat-tags">
+          <span class="cat-tag">Ajuste de móveis</span>
+          <span class="cat-tag">Instalações simples</span>
+          <span class="cat-tag">Kit feminino</span>
+          <span class="cat-tag">Pequenos reparos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRASES -->
+<section class="section-frases">
+  <h2>Para a mulher que já pensou <br><em>"por que ninguém me ensinou isso?"</em></h2>
+  <div class="frases-grid">
+    <div class="frase-card">
+      <div class="frase-quote">"</div>
+      <p class="frase-text">Me separei há dois anos e de repente era eu que tinha que resolver tudo. Sentia que não sabia de nada.</p>
+      <span class="frase-author">Recém-divorciada, 38 anos</span>
+    </div>
+    <div class="frase-card">
+      <div class="frase-quote">"</div>
+      <p class="frase-text">Quando a luz do painel acendia eu ficava em pânico. Nunca sabia se era urgente ou não.</p>
+      <span class="frase-author">Profissional urbana, 31 anos</span>
+    </div>
+    <div class="frase-card">
+      <div class="frase-quote">"</div>
+      <p class="frase-text">Moro sozinha faz 3 anos. O medo de ser enganada por prestadores de serviço é constante.</p>
+      <span class="frase-author">Mãe solo, 44 anos</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-cta">
+  <h2>Seja das primeiras.<br>É grátis. É seu direito.</h2>
+  <p>A Donna Resolve está chegando. Entre na lista de espera e ganhe acesso antecipado — sem custo.</p>
+  <div class="cta-form">
+    <div class="input-row">
+      <input type="email" id="email-cta" placeholder="seu@email.com" />
+      <button class="btn-main" onclick="cadastrar('email-cta', 'success-cta')">Quero entrar →</button>
+    </div>
+    <div class="success-msg" id="success-cta">✅ Perfeito! Você está na lista. Avisaremos quando lançar!</div>
+    <div class="cta-wpp">
+      <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20entrar%20na%20lista%20de%20espera%20da%20Donna%20Resolve%20🌱" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Prefiro entrar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Donna<span>Resolve</span></div>
+  <div class="footer-slogan">"A gente apoia, você resolve!"</div>
+  <p>© 2026 Donna Resolve. Todos os direitos reservados. · contato@donnaresolve.com.br</p>
+</footer>
+
+<script>
+function cadastrar(inputId, successId) {
+  const email = document.getElementById(inputId).value;
+  if (!email || !email.includes('@')) {
+    alert('Por favor, insira um e-mail válido.');
+    return;
+  }
+  // Aqui você integra com Mailchimp, Google Forms, etc.
+  // Por enquanto, mostra mensagem de sucesso
+  document.getElementById(inputId).value = '';
+  document.getElementById(successId).style.display = 'block';
+  setTimeout(() => {
+    document.getElementById(successId).style.display = 'none';
+  }, 5000);
+}
+
+// Smooth scroll for nav CTA
+document.querySelector('.nav-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('lista').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Animate on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pain-card, .step-card, .cat-card, .frase-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
