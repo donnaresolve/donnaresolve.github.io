@@ -1030,22 +1030,23 @@ function cadastrar(emailId, nomeId, successId) {
     alert('Por favor, insira um e-mail válido.');
     return;
   }
-  const formData = new FormData();
-  formData.append('entry.684166941', email);
-  formData.append('entry.879704866', '');
-  const url = 'https://docs.google.com/forms/d/e/1FAIpQLScjM5PP9QXNtOVpB7bZ0A54zSaoatjJalKklrrtIVnY2aBpig/formResponse';
-  fetch(url, {
+  fetch('https://formspree.io/f/xvzvagdr', {
     method: 'POST',
-    mode: 'no-cors',
-    body: formData
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (emailEl) emailEl.value = '';
+    const successEl = document.getElementById(successId);
+    if (successEl) {
+      successEl.style.display = 'block';
+      setTimeout(() => { successEl.style.display = 'none'; }, 5000);
+    }
+  })
+  .catch(() => {
+    alert('Ops! Algo deu errado. Tente novamente.');
   });
-  // Show success regardless (no-cors means we can't read the response)
-  if (emailEl) emailEl.value = '';
-  const successEl = document.getElementById(successId);
-  if (successEl) {
-    successEl.style.display = 'block';
-    setTimeout(() => { successEl.style.display = 'none'; }, 5000);
-  }
 }
 
 // Smooth scroll for nav CTA
