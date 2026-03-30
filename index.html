@@ -820,10 +820,12 @@
 
       <div class="hero-form" id="lista">
         <label class="form-label">Entre na lista de espera gratuita</label>
-        <div class="input-row">
-          <input type="email" id="email-hero" placeholder="seu@email.com" />
-          <button class="btn-main" onclick="cadastrar('email-hero', 'nome-hero', 'success-hero')">Quero entrar →</button>
-        </div>
+        <form action="https://formspree.io/f/xvzvagdr" method="POST" onsubmit="enviar(event, 'success-hero')">
+          <div class="input-row">
+            <input type="email" name="email" id="email-hero" placeholder="seu@email.com" required />
+            <button type="submit" class="btn-main">Quero entrar →</button>
+          </div>
+        </form>
         <div class="success-msg" id="success-hero">✅ Ótimo! Você está na lista. Avisaremos quando lançar!</div>
         <div class="hero-social-proof">
           <div class="avatars">
@@ -1007,10 +1009,12 @@
   <h2>Seja das primeiras.<br>É grátis. É seu direito.</h2>
   <p>A Donna Resolve está chegando. Entre na lista de espera e ganhe acesso antecipado — sem custo.</p>
   <div class="cta-form">
-    <div class="input-row">
-      <input type="email" id="email-cta" placeholder="seu@email.com" />
-      <button class="btn-main" onclick="cadastrar('email-cta', 'nome-cta', 'success-cta')">Quero entrar →</button>
-    </div>
+    <form action="https://formspree.io/f/xvzvagdr" method="POST" onsubmit="enviar(event, 'success-cta')">
+      <div class="input-row">
+        <input type="email" name="email" id="email-cta" placeholder="seu@email.com" required />
+        <button type="submit" class="btn-main" style="background:var(--quase-preto);">Quero entrar →</button>
+      </div>
+    </form>
     <div class="success-msg" id="success-cta">✅ Perfeito! Você está na lista. Avisaremos quando lançar!</div>
   </div>
 </section>
@@ -1023,29 +1027,24 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function cadastrar(emailId, nomeId, successId) {
-  const emailEl = document.getElementById(emailId);
-  const email = emailEl ? emailEl.value.trim() : '';
-  if (!email || !email.includes('@')) {
-    alert('Por favor, insira um e-mail válido.');
-    return;
-  }
+function enviar(e, successId) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
   fetch('https://formspree.io/f/xvzvagdr', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ email: email })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (emailEl) emailEl.value = '';
-    const successEl = document.getElementById(successId);
-    if (successEl) {
-      successEl.style.display = 'block';
-      setTimeout(() => { successEl.style.display = 'none'; }, 5000);
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(res => {
+    if (res.ok) {
+      form.reset();
+      const el = document.getElementById(successId);
+      if (el) { el.style.display = 'block'; setTimeout(() => { el.style.display = 'none'; }, 5000); }
+    } else {
+      alert('Ops! Algo deu errado. Tente novamente.');
     }
-  })
-  .catch(() => {
-    alert('Ops! Algo deu errado. Tente novamente.');
+  }).catch(() => {
+    alert('Ops! Sem conexão. Tente novamente.');
   });
 }
 
